@@ -1,17 +1,20 @@
-function twoNumberSum(string, targetSum){
+function twoNumberSum(array, targetSum) {
 
-    for (var i = 0; i < string.length; i++) {
-        var c = string.charAt(i);
-        if (string.indexOf(c) == i && string.indexOf(c, i + 1) == -1) {
-            return c;
+    const nums = {};
+
+    for (const num of array) { 
+        const potentialMatch = targetSum - num;
+        console.log('potential - ' + potentialMatch);
+
+        
+        if (potentialMatch in nums) {
+            return [potentialMatch, num]
+        } else {
+            nums[num] = true;
+          
         }
+        console.log(nums)
     }
-    return null;
 }
 
-const mot = 'abcdcaf';
-console.log(twoNumberSum(mot));
-    // Merci de ne pas effacer la ligne en dessous.
-    exports.twoNumberSum =  twoNumberSum;
-
-
+console.log(twoNumberSum([ 3, 5, -4, 8, 11, 1, -1, 6], 10))
